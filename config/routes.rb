@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'signin'   => 'basic_pages#signin'
   get 'signup'   => 'customers#new'
 
+  resources :customers
 end

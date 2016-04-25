@@ -13,7 +13,10 @@
 	<div class="top" style="height: 70px">
 		<%= render 'layouts/header' %>
 	</div>
-	<div class="main_body", style="height: 580px">
+	<div class="main_body">
+	<% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
 		<%= yield %>
 	</div>
 	
@@ -21,6 +24,6 @@
 	<div class="footer">
 		<%= render 'layouts/footer' %>
 	</div>
-	
+	<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

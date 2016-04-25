@@ -1,0 +1,88 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$header: #34495E;
+
+.header{
+	background-color: $header;
+	padding-top: 28px;
+	font-weight: 700;
+	padding-bottom: 20px;
+
+	.list{
+	float: right;
+	a{
+	margin-right: 15px;
+	text-decoration: none;
+	}
+	}
+
+	#logo{
+	float: left;
+	}
+
+	a:hover{
+	color: white;
+	}
+
+}
+
+.header{
+		border-bottom: 2px solid #5DADE2;
+}
+
+.main_body{
+	background-color: #E5E8E8;
+	text-align: center;
+	padding-top: 1px;
+}
+
+.footer{
+	font-weight: 700;
+	color: $header;
+	text-align: center;
+	a{
+		margin-left: 15px;
+	}
+}
+
+#jumbo{
+	height:500px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 0px;
+	padding: 0px;
+}
+
+.bg-image{
+    height:250px;
+    width:1280px;
+    margin-top: 15px;
+   }
+#about_us{
+	color:#99A3A4;
+	font-weight: 700;
+}
+
+#para{
+    font-weight: 400;
+	color:#99A3A4;
+}
+
+#sign_up{
+	margin-top: 20px;
+}
+
+#services{
+	font-weight: 600;
+	color:#99A3A4;
+	font-size: 48px;
+}
+.services_pic{
+	text-decoration: none;
+	a{
+	text-decoration: none;
+	font-weight: 600;
+	}
+}
+

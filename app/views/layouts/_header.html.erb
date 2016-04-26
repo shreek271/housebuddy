@@ -4,8 +4,13 @@
     <ul class="nav navbar-nav list">
       <%= link_to "Home", root_url %>
       <%= link_to "Services", services_path %>
+      	<% if signed_in? %>
+			<%= link_to "Profile Update", edit_customer_path(current_customer) %>
+            <%= link_to "Sign Out", signout_path, method: "delete" %>
+        <% else %>
       <%= link_to "Contact", contact_path %>
       <%= link_to "Signin", signin_path %>
+      	  <% end %>
     </ul>
   </div>
 </nav>

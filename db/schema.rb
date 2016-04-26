@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425120006) do
+ActiveRecord::Schema.define(version: 20160426085335) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "mobile"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin",           default: false
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true

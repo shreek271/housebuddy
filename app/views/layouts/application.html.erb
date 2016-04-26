@@ -13,7 +13,7 @@
 	<div class="top" style="height: 70px">
 		<%= render 'layouts/header' %>
 	</div>
-	<div class="main_body">
+	<div class="main_body", style="height: 650px;">
 	<% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>

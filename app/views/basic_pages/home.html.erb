@@ -1,12 +1,22 @@
 <% provide(:title, "Home") %>
 
-<div id="jumbo">
- <img src="background.jpg" class="bg-image">
- <h1 id="about_us">About us</h1>
- <p id="para"><i>We are dedicated towards providing quality service which will help you get your issues/problems resolved.</i></p>
 
- <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary", id: "sign_up" %>
-</div> 
+<% if signed_in? %>
+  <% if current_customer.admin? && !current_customer?(@customer) %>
+    <%= link_to "Customers", "#", class: "btn btn-lg btn-primary", id: "customers" %>
+    <%= link_to "Services", "#", class: "btn btn-lg btn-primary", id: "customers" %>
+  <% else %>
+  hi
+<% end %>
+    <% end %>
+	<div id="jumbo">
+ 		<img src="background.jpg" class="bg-image">
+ 		<h1 id="about_us">About us</h1>
+ 		<p id="para"><i>We are dedicated towards providing quality service which will help you get your issues/problems resolved.</i></p>
+
+ 		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary", id: "sign_up" %>
+	</div> 
+
 
 
 	

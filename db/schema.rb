@@ -11,19 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426085335) do
+ActiveRecord::Schema.define(version: 20160427081159) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "mobile"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",             default: false
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+
+  create_table "issues", force: :cascade do |t|
+    t.text     "content"
+    t.text     "address"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "issues", ["customer_id", "created_at"], name: "index_issues_on_customer_id_and_created_at"
+  add_index "issues", ["customer_id"], name: "index_issues_on_customer_id"
+
+  create_table "services", force: :cascade do |t|
+    t.string   "name"
+    t.string   "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "email"
+  end
 
 end

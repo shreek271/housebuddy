@@ -1,0 +1,16 @@
+<%= provide(:title, "ServiceRequests") %>
+
+<h1>Service request</h1>
+
+<%= form_for(@issue) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="request">
+  	<%= f.label :issue, id: "issue" %>
+    <%= f.text_area :content, placeholder: "datails of issue" %>
+  </div>
+  <div class="address">
+    <%= f.label :Your_address, id: "a1" %>
+  	<%= f.text_area :address, placeholder: "Your complete address" %>
+  </div>
+  <%= f.submit "Request Service", class: "btn btn-primary" %>
+<% end %>

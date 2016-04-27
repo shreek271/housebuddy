@@ -3,10 +3,10 @@
 
 <% if signed_in? %>
   <% if current_customer.admin? && !current_customer?(@customer) %>
-    <%= link_to "Customers", "#", class: "btn btn-lg btn-primary", id: "customers" %>
-    <%= link_to "Services", "#", class: "btn btn-lg btn-primary", id: "customers" %>
+    <%= link_to "Customers", customers_path, class: "btn btn-lg btn-primary", id: "customers" %>
+    <%= link_to "Services", addservice_path, class: "btn btn-lg btn-primary", id: "customers" %>
   <% else %>
-  hi
+   <%= link_to "Service Requests", @current_customer , class: "btn btn-lg btn-primary", id: "customers" %>
 <% end %>
     <% end %>
 	<div id="jumbo">

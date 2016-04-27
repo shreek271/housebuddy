@@ -1,9 +1,7 @@
 class BasicPagesController < ApplicationController
 
   def home
-  end
-
-  def services
+  	@micropost = current_customer.issues.build if signed_in?
   end
 
   def contact

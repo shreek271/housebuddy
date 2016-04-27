@@ -1,3 +1,23 @@
 <% provide(:title, @customer.name) %>
 
-<span><%= @customer.name %> </span>
+<h1><%= @customer.name %></h1>
+  <% if @customer.issues.any? %>
+    <h3>Services requested (<%= @customer.issues.count %>)</h3> 
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Issues</th>
+        <th>Address</th>
+        <th>Request time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <%= render @issues %>
+    </tbody>
+  </table>
+</div>
+    <%= will_paginate @issues %>
+  <% end %>
+

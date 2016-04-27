@@ -1,0 +1,17 @@
+<% provide(:title, 'All Services') %>
+<h1>Services</h1>
+
+<div class="container">
+<div class="row">
+  <% @services.each do |service| %>
+  <div class="col-md-4">
+	<%= link_to service.name, servicerequest_path %>
+	<% if current_customer.admin? && !current_customer?(@customer) %>
+    | <%= link_to "delete", service, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+  <% end %>
+ </div>
+</div>
+</div>
+          

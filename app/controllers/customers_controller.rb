@@ -1,10 +1,13 @@
 class CustomersController < ApplicationController
 
-	before_action :signed_in_customer, only: [:edit, :update]
+	before_action :signed_in_customer, only: [:edit, :update, :destroy]
 	before_action :correct_customer, only: [:edit, :update]
+  before_action :admin_customer,     only: :destroy
 
   def show
   	@customer = Customer.find(params[:id])
+    @issues = @customer.issues.paginate(page: params[:page])
+
   end
 
   def new
@@ -14,12 +17,16 @@ class CustomersController < ApplicationController
   def create
   	@customer = Customer.new(customer_params)
   	if @customer.save
-  		sign_in @customer
-  		flash[:success] = "Successfully registered"
-  		redirect_to @customer
+      @customer.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+  		redirect_to root_url
   	else
   		render 'new'
   	end
+  end
+
+  def index
+    @customers = Customer.all
   end
 
   def edit
@@ -36,6 +43,12 @@ class CustomersController < ApplicationController
   	end
   end
 
+  def destroy
+    Customer.find(params[:id]).destroy
+    flash[:success] = "Customer deleted"
+    redirect_to customers_url
+  end
+
   private
 
   def customer_params
@@ -43,16 +56,12 @@ class CustomersController < ApplicationController
   					 :password_confirmation)
   end
 
-  def signed_in_customer
-  	unless signed_in?
-  		store_location
-  		flash[:danger] = "Please, Sign In."
-  		redirect_to signin_url
-  	end
-  end
-
   def correct_customer
   	@customer = Customer.find(params[:id])
   	redirect_to root_url unless current_customer?(@customer)
+  end
+
+  def admin_customer
+      redirect_to(root_url) unless current_customer.admin?
   end
 end

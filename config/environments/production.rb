@@ -92,3 +92,4 @@ config.action_mailer.smtp_settings = {
   password: "123@Gmail",
   domain: 'gmail.com'
 }
+end

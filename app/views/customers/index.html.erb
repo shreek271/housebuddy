@@ -1,12 +1,27 @@
 <% provide(:title, 'All Customer') %>
-<h1>All customers</h1>
 
-  <% @customers.each do |customer| %>
-  <li>
-	<%= link_to customer.name, customer %>
-	<% if current_customer.admin? && !current_customer?(customer) %>
-    | <%= link_to "delete", customer, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-  </li>
-  <% end %>
+<div class="services text-center"><span>All customers</span></div>
+
+<div class="container text-center">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+		<td><%= link_to customer.name, customer %></td>
+		<td><%= customer.email %></td>
+		<td><%= customer.mobile %></td>
+		<td><%= link_to "delete", customer, method: :delete,
+                                  data: { confirm: "You sure?" } %> </td>
+		<tr>
+		 <% end %>
+    </tbody>
+  </table>
+</div>

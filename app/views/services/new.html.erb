@@ -1,7 +1,8 @@
 <%= provide(:title, "Services") %>
 
-<h1>Add Services</h1>
-
+<div class="services text-center">
+<span>Add Services</span>
+</div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@service, html: { multipart: true }) do |f| %>
@@ -9,14 +10,14 @@
 
       <%= f.label :service_name %>
       <%= f.text_field :name, class: 'form-control' %>
-
+      <br>
       <%= f.label :service_provider_email %>
       <%= f.email_field :email, class: 'form-control' %>
-
+      <br>
       <span class="picture">
       <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %>
       </span>
-
+      <br>
       <%= f.submit "Add Service", class: "btn btn-primary" %>
     <% end %>
   </div>

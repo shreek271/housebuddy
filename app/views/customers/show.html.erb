@@ -1,9 +1,14 @@
 <% provide(:title, @customer.name) %>
 
-<h1><%= @customer.name %></h1>
+<div class="issue_show text-center">
+<span><%= (@customer.name).capitalize %></span>  
+</div>
   <% if @customer.issues.any? %>
-    <h3>Services requested (<%= @customer.issues.count %>)</h3> 
-<div class="container">
+    <div class="text-center sr_title">
+      <span>Requested Services(<%= @customer.issues.count %>)</span>
+    </div>
+    
+<div class="container text-center">
   <table class="table table-hover">
     <thead>
       <tr>
@@ -19,5 +24,9 @@
   </table>
 </div>
     <%= will_paginate @issues %>
-  <% end %>
+    <% else %>
+    <div class="text-center">
+    <span>No service requested till now</span>
+    </div>
+<% end %>
 

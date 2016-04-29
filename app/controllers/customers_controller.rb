@@ -7,7 +7,6 @@ class CustomersController < ApplicationController
   def show
   	@customer = Customer.find(params[:id])
     @issues = @customer.issues.paginate(page: params[:page])
-
   end
 
   def new
@@ -17,7 +16,7 @@ class CustomersController < ApplicationController
   def create
   	@customer = Customer.new(customer_params)
   	if @customer.save
-      @customer.send_activation_email
+      CustomerMailer.account_activation(@customer).deliver_now
       flash[:info] = "Please check your email to activate your account."
   		redirect_to root_url
   	else

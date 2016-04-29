@@ -1,17 +1,26 @@
 <% provide(:title, 'All Services') %>
-<h1>Services</h1>
 
-<div class="container">
+<div class="text-center services">
+<span>Services</span> 
+</div>
+
+
+<div class="container service_name">
 <div class="row">
   <% @services.each do |service| %>
-  <div class="col-md-4">
-	<%= link_to service.name, servicerequest_path %>
-	<% if current_customer.admin? && !current_customer?(@customer) %>
-    | <%= link_to "delete", service, method: :delete,
+  <div class="col-sm-3">
+  	<div class="thumbnail">
+    <span><%= (service.name).capitalize %></span>   <!--servicerequest_path-->
+		<%= link_to (image_tag service.photo.url, class: 'image'), service %>
+		<% if current_customer.try(:admin?) && !current_customer?(@customer) %>
+     	<%= link_to "delete", service, method: :delete,
                                   data: { confirm: "You sure?" } %>
+         <% end %>
+   </div>
+   </div>
   <% end %>
-  <% end %>
- </div>
+
 </div>
+<span id="below"> We are trying to add all the possible services.</span> 
 </div>
           

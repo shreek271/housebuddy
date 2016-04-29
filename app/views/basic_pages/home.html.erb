@@ -2,21 +2,56 @@
 
 
 <% if signed_in? %>
+  
   <% if current_customer.admin? && !current_customer?(@customer) %>
-    <%= link_to "Customers", customers_path, class: "btn btn-lg btn-primary", id: "customers" %>
-    <%= link_to "Services", addservice_path, class: "btn btn-lg btn-primary", id: "customers" %>
+  <h1>Hello, <%= current_customer.name %></h1>
+  <div class="admin_view">
+    <div class="upper">
+    	<div id="customer">
+    	<%= link_to "View All Customers", customers_path, class: "btn btn-lg btn-primary"%>
+    	</div>
+    	<div id = "new_service">
+    	<%= link_to "View All Services", services_path, class: "btn btn-lg btn-primary" %>
+    	</div>
+ 	</div> 
+ 	<div class="lower">
+ 		<%= link_to "Add New Service", addservice_path, class: "btn btn-lg btn-primary"%>
+ 	</div>
+    </div>
+         
   <% else %>
-   <%= link_to "Service Requests", @current_customer , class: "btn btn-lg btn-primary", id: "customers" %>
+   <div class="customer_view">
+     <%= render 'hwt' %>
+	  <div class="view_request">
+		    <div class="left">
+		     <%= link_to "View All Service Requests", @current_customer , class: "btn btn-lg btn-primary"%>
+		    </div>
+	   		<div class="right">
+	   		 <%= link_to "Place a Service Request", services_path, class: "btn btn-lg btn-primary" %>
+	   		</div>
+   	  </div>
+	</div>
+  	<% end %>
+<%else %>
+
+<div class="all_customers">
+<div class="banner">
+	<img src="background.jpg" class="bg-image">
+</div>
+<div class="about_us">
+<div class="quote">
+	<div id="quote1"><span>Have a housing problem? need the best solution?</span></div>
+	<div id="quote2"><span>Stop thinking and shoot your housing issues to us.</span></div>
+	<div class="signup">
+	<%= link_to "Sign Up now!", signup_path, class: "btn btn-lg btn-primary", id: "sign_up" %>
+	</div>	
+	<div id="quote3"><span>We are dedicated towards providing quality service to help you with your housing solutions.</span></div>	
+</div>
+</div>
+	<%= render 'hwt' %>
+	
+</div>		
 <% end %>
-    <% end %>
-	<div id="jumbo">
- 		<img src="background.jpg" class="bg-image">
- 		<h1 id="about_us">About us</h1>
- 		<p id="para"><i>We are dedicated towards providing quality service which will help you get your issues/problems resolved.</i></p>
-
- 		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary", id: "sign_up" %>
-	</div> 
-
 
 
 	

@@ -4,6 +4,10 @@ class ServicesController < ApplicationController
   	@service = Service.new
   end
 
+  def show
+    @service = Service.find(params[:id])
+  end
+
   def create
   	@service = Service.create(service_params)
   	if @service.save
@@ -13,9 +17,15 @@ class ServicesController < ApplicationController
   		render 'new'
   	end
   end
-
+  
   def index
     @services = Service.all
+  end
+
+  def destroy
+    Service.find(params[:id]).destroy
+    flash[:success] = "service deleted"
+    redirect_to services_url
   end
 
   private

@@ -1,0 +1,23 @@
+<%= form_for(Issue.new) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="request">
+  	<%= f.label :issue %>
+    <%= f.text_area :content, placeholder: "datails of issue" %>
+  </div>
+  <div>
+    <%= f.hidden_field :service_id, value: @service.id %>
+  </div>
+    <div class="address">
+    <%= f.label :Your_address %>
+  	<%= f.text_area :address, placeholder: "Your complete address" %>
+  </div>
+  <div>
+    <%= f.label :ZIP_Code %>
+    <%= f.text_field :zip, max: 6, min: 6 %>
+  </div>
+  <div>
+    <%= f.label :City %>
+    <%= f.text_field :city %>
+  </div>
+  <%= f.submit "Request Service", class: "btn btn-primary" %>
+<% end %>

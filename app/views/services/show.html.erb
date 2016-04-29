@@ -1,0 +1,11 @@
+<% provide(:title, @service.name) %>
+
+<div class="services text-center">
+<span><%= (@service.name).capitalize %></span>	
+</div>
+
+<div class="row issue_form">
+<div class="col-md-6 col-md-offset-3"> 
+<%= render 'shared/new' %>
+</div>
+</div>

@@ -13,5 +13,7 @@ class ApplicationController < ActionController::Base
   		redirect_to signin_url
   	end
   end
+
+  
   
 end
